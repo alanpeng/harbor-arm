@@ -47,7 +47,7 @@ BUILDPATH=$(CURDIR)/src/github.com/goharbor/harbor
 # default goharbor/harbor make path
 HARBOR_MAKEFILE_PATH=$(BUILDPATH)/Makefile
 HARBOR_PHOTON_MAKEFILE_PATH=$(BUILDPATH)/make/photon/Makefile
-HARBOR_PHOTON_CHARTSERVER_COMPILE_PATH=$(BUILDPATH)/make/photon/chartserver/compile.sh
+#HARBOR_PHOTON_CHARTSERVER_COMPILE_PATH=$(BUILDPATH)/make/photon/chartserver/compile.sh
 HARBOR_PHOTON_REGISTRY_DOCKERFILE_PATH=$(BUILDPATH)/make/photon/registry/Dockerfile.binary
 HARBOR_PHOTON_TRIVY-ADAPTER_DOCKERFILE_PATH=$(BUILDPATH)/make/photon/trivy-adapter/Dockerfile.binary
 HARBOR_PHOTON_NOTARY_DOCKERFILE_PATH=$(BUILDPATH)/make/photon/notary/binary.Dockerfile
@@ -121,9 +121,9 @@ _update_make_photon_makefile:
 	@$(SEDCMDI) 's/$(DOCKERCMD) build/$(DOCKERCMD) buildx build --platform linux\/arm64 --progress plain --output=type=docker/' $(HARBOR_PHOTON_MAKEFILE_PATH)
 	@$(SEDCMDI) '219 a \ \ \ \ \ \ \ \ docker buildx prune -f ; \\' $(HARBOR_PHOTON_MAKEFILE_PATH)
 
-_update_chartserver:
-	@echo "update goharbor chartserver compile.sh"
-	@$(SEDCMDI) 's/go build -a/GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -a/g' $(HARBOR_PHOTON_CHARTSERVER_COMPILE_PATH)
+#_update_chartserver:
+#	@echo "update goharbor chartserver compile.sh"
+#	@$(SEDCMDI) 's/go build -a/GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -a/g' $(HARBOR_PHOTON_CHARTSERVER_COMPILE_PATH)
 
 _update_registry:
 	@echo "update goharbor registry Dockerfile.binary"
@@ -151,7 +151,8 @@ _update_exporter:
 
 
 
-pre_update: _update_makefile _update_make_photon_makefile _update_chartserver _update_registry _update_trivy-adapter _update_notary _update_portal _update_exporter
+#pre_update: _update_makefile _update_make_photon_makefile _update_chartserver _update_registry _update_trivy-adapter _update_notary _update_portal _update_exporter
+pre_update: _update_makefile _update_make_photon_makefile _update_registry _update_trivy-adapter _update_notary _update_portal _update_exporter
 
 # downlaod goharbor/harbor source code
 download:
