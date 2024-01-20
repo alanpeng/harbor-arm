@@ -37,4 +37,4 @@ cp ./stage/RPMS/aarch64/$name-debuginfo-$version-1.ph5.aarch64.rpm $cur
 cp ./stage/RPMS/aarch64/$name-$version-1.ph5.aarch64.rpm $cur
 
 # clean
-cd $cur && rm -rf $workDir
+#cd $cur && rm -rf $workDir
