@@ -33,10 +33,8 @@ chmod 755 ./build_spec.sh && cp $cur/redis.spec .
 
 # step 4: build redis rpm.
 ./build_spec.sh ./redis.spec
-#cp ./stage/RPMS/aarch64/$name-debuginfo-$version-1.ph4.aarch64.rpm $cur
-#cp ./stage/RPMS/aarch64/$name-$version-1.ph4.aarch64.rpm $cur
-find ./ -name *.rpm
-cp `find ./ -name *.rpm` $cur
+cp ./stage/RPMS/aarch64/$name-debuginfo-$version-1.ph5.aarch64.rpm $cur
+cp ./stage/RPMS/aarch64/$name-$version-1.ph5.aarch64.rpm $cur
 
 # clean
 cd $cur && rm -rf $workDir
