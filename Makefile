@@ -59,7 +59,7 @@ HARBOR_PUSHIMAGE_PATH=$(BUILDPATH)/make/pushimage.sh
 # download goharbor/harbor parammeters
 HARBOR_SOURCE_URL=https://github.com/goharbor/harbor.git
 SRCPATH=src/github.com/goharbor/harbor
-HARBOR_TAG=release-2.3.0
+HARBOR_TAG=release-2.10.0
 
 # makefile path
 MAKEPATH=$(BUILDPATH)/make
@@ -121,9 +121,9 @@ _update_make_photon_makefile:
 	@$(SEDCMDI) 's/$(DOCKERCMD) build/$(DOCKERCMD) buildx build --platform linux\/arm64 --progress plain --output=type=docker/' $(HARBOR_PHOTON_MAKEFILE_PATH)
 	@$(SEDCMDI) '219 a \ \ \ \ \ \ \ \ docker buildx prune -f ; \\' $(HARBOR_PHOTON_MAKEFILE_PATH)
 
-#_update_chartserver:
-#	@echo "update goharbor chartserver compile.sh"
-#	@$(SEDCMDI) 's/go build -a/GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -a/g' $(HARBOR_PHOTON_CHARTSERVER_COMPILE_PATH)
+_update_chartserver:
+	@echo "update goharbor chartserver compile.sh"
+	@$(SEDCMDI) 's/go build -a/GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -a/g' $(HARBOR_PHOTON_CHARTSERVER_COMPILE_PATH)
 
 _update_registry:
 	@echo "update goharbor registry Dockerfile.binary"
@@ -152,7 +152,7 @@ _update_exporter:
 
 
 #pre_update: _update_makefile _update_make_photon_makefile _update_chartserver _update_registry _update_trivy-adapter _update_notary _update_portal _update_exporter
-pre_update: _update_makefile _update_make_photon_makefile _update_registry _update_trivy-adapter _update_notary _update_portal _update_exporter
+pre_update: _update_makefile _update_make_photon_makefile _update_registry _update_trivy-adapter _update_portal _update_exporter
 
 # downlaod goharbor/harbor source code
 download:
