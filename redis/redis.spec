@@ -1,6 +1,6 @@
 Summary:        advanced key-value store
 Name:           redis
-Version:        7.0.9
+Version:        7.2.2
 Release:        1%{?dist}
 License:        BSD
 URL:            http://redis.io/

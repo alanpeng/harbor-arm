@@ -3,7 +3,7 @@
 set -e
 
 name='redis'
-version='7.0.9'
+version='7.2.2'
 core_branch='release-2.10.0'
 
 function checkdep {
